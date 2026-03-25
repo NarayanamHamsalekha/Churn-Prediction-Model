@@ -55,19 +55,23 @@ def index():
         for col in features.select_dtypes(include='object').columns:
             features[col] = features[col].astype('category')
 
-        # Prediction
-        prediction = model.predict(features)
-        prediction_proba = model.predict_proba(features)
+# 4️⃣ Predict button
+if st.button("Predict"):
+    # Make prediction
+    prediction = model.predict(input_df)
+    prediction_proba = model.predict_proba(input_df)
 
-        # Same logic as your Streamlit code
-       if prediction[0] == 1 or (prediction_proba[0][1]*100 >= threshold):
-           prediction_text = "<span style='color:red;font-weight:bold'>Customer will churn</span>"
-       else:
-           prediction_text = "<span style='color:green;font-weight:bold'>Customer will stay</span>"
-        prediction_prob = f"Stay: {prediction_proba[0][0]*100:.2f}%, Churn: {prediction_proba[0][1]*100:.2f}%"
+    # Set prediction text with color
+    if prediction[0] == 1 or (prediction_proba[0][1]*100 >= threshold):
+        prediction_text = "<span style='color:red;font-weight:bold'>Customer will churn</span>"
+    else:
+        prediction_text = "<span style='color:green;font-weight:bold'>Customer will stay</span>"
 
-    return render_template("index.html", prediction_text=prediction_text, prediction_prob=prediction_prob, threshold=threshold)
+    # Display prediction
+    st.subheader("Prediction")
+    st.markdown(prediction_text, unsafe_allow_html=True)
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
+    # Display prediction probabilities
+    st.subheader("Prediction Probability")
+    st.write(f"Stay: {prediction_proba[0][0]*100:.2f}%")
+    st.write(f"Churn: {prediction_proba[0][1]*100:.2f}%")
