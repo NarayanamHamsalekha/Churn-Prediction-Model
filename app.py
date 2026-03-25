@@ -60,11 +60,10 @@ def index():
         prediction_proba = model.predict_proba(features)
 
         # Same logic as your Streamlit code
-        if prediction[0] == 1 or (prediction_proba[0][1]*100 >= threshold):
-            prediction_text = "Customer will churn"
-        else:
-            prediction_text = "Customer will stay"
-
+       if prediction[0] == 1 or (prediction_proba[0][1]*100 >= threshold):
+           prediction_text = "<span style='color:red;font-weight:bold'>Customer will churn</span>"
+       else:
+           prediction_text = "<span style='color:green;font-weight:bold'>Customer will stay</span>"
         prediction_prob = f"Stay: {prediction_proba[0][0]*100:.2f}%, Churn: {prediction_proba[0][1]*100:.2f}%"
 
     return render_template("index.html", prediction_text=prediction_text, prediction_prob=prediction_prob, threshold=threshold)
