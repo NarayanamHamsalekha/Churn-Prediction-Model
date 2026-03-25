@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>📊 Customer Churn Prediction App</h1>
+    <form method="POST">
+
+        <!-- Threshold slider -->
+        Prediction Threshold (%):
+        <input type="number" name="threshold" min="0" max="100" value="{{ threshold }}"><br><br>
+
+        Gender:
+        <select name="gender">
+            <option>Female</option>
+            <option>Male</option>
+        </select><br>
+
+        Senior Citizen:
+        <select name="SeniorCitizen">
+            <option>0</option>
+            <option>1</option>
+        </select><br>
+
+        Partner:
+        <select name="Partner">
+            <option>Yes</option>
+            <option>No</option>
+        </select><br>
+
+        Dependents:
+        <select name="Dependents">
+            <option>Yes</option>
+            <option>No</option>
+        </select><br>
+
+        Tenure: <input type="number" name="tenure" min="0" max="72" value="12"><br>
+        Monthly Charges: <input type="number" name="MonthlyCharges" value="70"><br>
+        Total Charges: <input type="number" name="TotalCharges" value="2000"><br>
+
+        PhoneService:
+        <select name="PhoneService">
+            <option>Yes</option>
+            <option>No</option>
+        </select><br>
+
+        MultipleLines:
+        <select name="MultipleLines">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No phone service</option>
+        </select><br>
+
+        InternetService:
+        <select name="InternetService">
+            <option>DSL</option>
+            <option>Fiber optic</option>
+            <option>No</option>
+        </select><br>
+
+        OnlineSecurity:
+        <select name="OnlineSecurity">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+        </select><br>
+
+        OnlineBackup:
+        <select name="OnlineBackup">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+        </select><br>
+
+        DeviceProtection:
+        <select name="DeviceProtection">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+        </select><br>
+
+        TechSupport:
+        <select name="TechSupport">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+        </select><br>
+
+        StreamingTV:
+        <select name="StreamingTV">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+        </select><br>
+
+        StreamingMovies:
+        <select name="StreamingMovies">
+            <option>Yes</option>
+            <option>No</option>
+            <option>No internet service</option>
+        </select><br>
+
+        Contract:
+        <select name="Contract">
+            <option>Month-to-month</option>
+            <option>One year</option>
+            <option>Two year</option>
+        </select><br>
+
+        PaperlessBilling:
+        <select name="PaperlessBilling">
+            <option>Yes</option>
+            <option>No</option>
+        </select><br>
+
+        PaymentMethod:
+        <select name="PaymentMethod">
+            <option>Electronic check</option>
+            <option>Mailed check</option>
+            <option>Bank transfer</option>
+            <option>Credit card</option>
+        </select><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    <h2>{{ prediction_text }}</h2>
+    <h3>{{ prediction_prob }}</h3>
+</body>
+</html>
