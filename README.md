@@ -150,7 +150,7 @@ You can access the deployed Customer Churn Prediction App here:
 Narayanam Hamsalekha 
 📧 Email: nhamsalekhahamsa@gmail.com
 📞 Phone: +91 8431017029
-🔗 GitHub Profile
+🔗 GitHub Profile: github.com/NarayanamHamsalekha/Churn-Prediction-Model
 
 📄 References
 Telco Customer Churn Dataset (Kaggle)
